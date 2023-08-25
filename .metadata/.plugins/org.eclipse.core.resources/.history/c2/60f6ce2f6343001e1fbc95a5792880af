@@ -1,0 +1,42 @@
+package s23.demo.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class DemoController {
+	
+	@RequestMapping("/hello")
+	@ResponseBody
+	public String hello() {
+		return "Moi sinä";
+	}
+	
+	@RequestMapping("/main")
+	@ResponseBody
+	public String main() {
+		return "Tämä on pääsivu";
+	}
+	
+	@RequestMapping("/moi")
+	@ResponseBody
+	public String moi(@RequestParam(name="nimesi") String nimi) {
+		return "Morjensta " + nimi;
+	}
+	
+	@RequestMapping("/moi2")
+	@ResponseBody
+	public String moi2(@RequestParam(name="nimesi", required=false, defaultValue="Muumi") String nimi) {
+		return "Morjensta " + nimi;
+	}
+	
+	@RequestMapping("/moi3")
+	@ResponseBody
+	public String moi3(@RequestParam(name="nimesi", required=false, defaultValue="Muumi") String nimi, @RequestParam(name="ikasi") int ika) {
+		return "Morjensta " + nimi +  " " + ika + " vuotta";
+	}
+
+
+}
